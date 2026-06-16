@@ -1,0 +1,111 @@
+{
+  "fixture_id": "synthetic_stale_state_001",
+  "schema_version": "2026-06-16",
+  "description": "Older state evidence conflicts with newer evidence and should be marked stale rather than used as present truth.",
+  "privacy": "synthetic",
+  "source_records": [
+    {
+      "id": "src_syn_stale_old_001",
+      "created_at": "2026-06-01T10:00:00Z",
+      "source_system": "synthetic-eval-fixture",
+      "source_type": "memory",
+      "source_ref": {
+        "kind": "artifact_id",
+        "locator": "synthetic-state-summary-001",
+        "version": "v1",
+        "fragment": "state"
+      },
+      "observed_at": "2026-06-01T09:55:00Z",
+      "referenced_at": "2026-06-01T09:50:00Z",
+      "excerpt_policy": {
+        "mode": "synthetic_summary",
+        "reason": "Synthetic state note contains no real person or transcript content.",
+        "max_excerpt_chars": 0
+      },
+      "privacy": "synthetic",
+      "provenance": {
+        "method": "synthetic fixture annotation",
+        "confidence": 0.8,
+        "chain": [
+          "source_record.created_from_synthetic_fixture",
+          "old_state_observation"
+        ],
+        "verified_by": [
+          "json_parse_check"
+        ]
+      },
+      "metadata": {
+        "domain": "recency-drift",
+        "contains_real_transcript": false,
+        "state_label": "waiting_on_vendor",
+        "currentness": "historical"
+      }
+    },
+    {
+      "id": "src_syn_stale_new_001",
+      "created_at": "2026-06-16T10:00:00Z",
+      "source_system": "synthetic-eval-fixture",
+      "source_type": "event",
+      "source_ref": {
+        "kind": "artifact_id",
+        "locator": "synthetic-project-event-001",
+        "version": "v1",
+        "fragment": "event-closed"
+      },
+      "observed_at": "2026-06-16T09:58:00Z",
+      "referenced_at": "2026-06-16T09:45:00Z",
+      "excerpt_policy": {
+        "mode": "synthetic_summary",
+        "reason": "Synthetic event record supersedes prior synthetic state.",
+        "max_excerpt_chars": 0
+      },
+      "privacy": "synthetic",
+      "provenance": {
+        "method": "synthetic fixture annotation",
+        "confidence": 0.9,
+        "chain": [
+          "source_record.created_from_synthetic_fixture",
+          "newer_event_supersedes_old_state"
+        ],
+        "verified_by": [
+          "json_parse_check"
+        ]
+      },
+      "metadata": {
+        "domain": "recency-drift",
+        "contains_real_transcript": false,
+        "state_label": "vendor_response_received",
+        "currentness": "newer"
+      }
+    }
+  ],
+  "candidate_insight": {
+    "id": "ins_syn_stale_001",
+    "created_at": "2026-06-16T10:05:00Z",
+    "claim": "The project is still waiting on a vendor response.",
+    "evidence_refs": [
+      "src_syn_stale_old_001"
+    ],
+    "confidence": 0.74,
+    "recency_scope": "near_history",
+    "uncertainty": "Newer evidence may supersede this state.",
+    "recommended_use": "Check for newer project events before using this as present state.",
+    "do_not_use_for": "Do not route current action from this claim without considering newer evidence.",
+    "privacy": "synthetic"
+  },
+  "expected_outcome": {
+    "should_emit_drift_warning": true,
+    "superseded_reference_list": [
+      "src_syn_stale_old_001"
+    ],
+    "preferred_reference_list": [
+      "src_syn_stale_new_001"
+    ],
+    "expected_flags": [
+      "stale_state",
+      "newer_evidence_available",
+      "current_state_requires_refresh"
+    ],
+    "recommended_use": "Treat the old state as historical context and refresh the current status from the newer event."
+  }
+}

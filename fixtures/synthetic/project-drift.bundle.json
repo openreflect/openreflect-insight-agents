@@ -1,0 +1,136 @@
+{
+  "fixture_id": "synthetic_project_drift_001",
+  "schema_version": "2026-06-16",
+  "description": "A project goal and action surface have shifted from planning to implementation, but an older plan still appears in retrieved context.",
+  "privacy": "synthetic",
+  "source_records": [
+    {
+      "id": "src_syn_project_plan_001",
+      "created_at": "2026-06-03T12:00:00Z",
+      "source_system": "synthetic-eval-fixture",
+      "source_type": "document",
+      "source_ref": {
+        "kind": "artifact_id",
+        "locator": "synthetic-project-plan-001",
+        "version": "v1",
+        "fragment": "objective"
+      },
+      "observed_at": "2026-06-03T11:50:00Z",
+      "referenced_at": "2026-06-03T11:45:00Z",
+      "excerpt_policy": {
+        "mode": "synthetic_summary",
+        "reason": "Generic planning note for public eval fixture.",
+        "max_excerpt_chars": 0
+      },
+      "privacy": "synthetic",
+      "provenance": {
+        "method": "synthetic fixture annotation",
+        "confidence": 0.85,
+        "chain": [
+          "source_record.created_from_synthetic_fixture",
+          "initial_project_objective"
+        ],
+        "verified_by": [
+          "json_parse_check"
+        ]
+      },
+      "metadata": {
+        "domain": "project-pattern",
+        "contains_real_transcript": false,
+        "project_phase": "planning",
+        "action_surface": "design_brief"
+      }
+    },
+    {
+      "id": "src_syn_project_commit_001",
+      "created_at": "2026-06-15T15:30:00Z",
+      "source_system": "synthetic-eval-fixture",
+      "source_type": "artifact",
+      "source_ref": {
+        "kind": "artifact_id",
+        "locator": "synthetic-change-set-001",
+        "version": "v2",
+        "fragment": "implementation-summary"
+      },
+      "observed_at": "2026-06-15T15:28:00Z",
+      "referenced_at": "2026-06-15T15:20:00Z",
+      "excerpt_policy": {
+        "mode": "synthetic_summary",
+        "reason": "Synthetic implementation artifact avoids real repository paths and commits.",
+        "max_excerpt_chars": 0
+      },
+      "privacy": "synthetic",
+      "provenance": {
+        "method": "synthetic fixture annotation",
+        "confidence": 0.88,
+        "chain": [
+          "source_record.created_from_synthetic_fixture",
+          "newer_artifact_indicates_implementation_phase"
+        ],
+        "verified_by": [
+          "json_parse_check"
+        ]
+      },
+      "metadata": {
+        "domain": "project-pattern",
+        "contains_real_transcript": false,
+        "project_phase": "implementation",
+        "action_surface": "code_review_queue"
+      }
+    },
+    {
+      "id": "src_syn_project_request_001",
+      "created_at": "2026-06-16T11:15:00Z",
+      "source_system": "synthetic-eval-fixture",
+      "source_type": "event",
+      "source_ref": {
+        "kind": "artifact_id",
+        "locator": "synthetic-routing-request-001",
+        "version": "v1",
+        "fragment": "current-task"
+      },
+      "observed_at": "2026-06-16T11:14:00Z",
+      "referenced_at": "2026-06-16T11:10:00Z",
+      "excerpt_policy": {
+        "mode": "synthetic_summary",
+        "reason": "Synthetic request describes a generic current task.",
+        "max_excerpt_chars": 0
+      },
+      "privacy": "synthetic",
+      "provenance": {
+        "method": "synthetic fixture annotation",
+        "confidence": 0.92,
+        "chain": [
+          "source_record.created_from_synthetic_fixture",
+          "current_request_mentions_review_and_release_notes"
+        ],
+        "verified_by": [
+          "json_parse_check"
+        ]
+      },
+      "metadata": {
+        "domain": "project-pattern",
+        "contains_real_transcript": false,
+        "project_phase": "implementation",
+        "action_surface": "release_preparation"
+      }
+    }
+  ],
+  "expected_outcome": {
+    "should_detect_project_drift": true,
+    "drift_type": "phase_shift",
+    "older_context_refs": [
+      "src_syn_project_plan_001"
+    ],
+    "current_context_refs": [
+      "src_syn_project_commit_001",
+      "src_syn_project_request_001"
+    ],
+    "expected_flags": [
+      "project_phase_changed",
+      "older_plan_may_misroute_action",
+      "prefer_current_artifacts"
+    ],
+    "recommended_use": "Route assistance toward implementation review and release preparation while preserving the planning note as background."
+  }
+}

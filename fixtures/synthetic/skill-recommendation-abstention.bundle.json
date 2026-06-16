@@ -1,0 +1,90 @@
+{
+  "fixture_id": "synthetic_skill_recommendation_abstention_001",
+  "schema_version": "2026-06-16",
+  "description": "The task mentions a possible tool or skill, but available metadata is insufficient to recommend activation confidently.",
+  "privacy": "synthetic",
+  "source_records": [
+    {
+      "id": "src_syn_skill_task_001",
+      "created_at": "2026-06-16T13:00:00Z",
+      "source_system": "synthetic-eval-fixture",
+      "source_type": "event",
+      "source_ref": {
+        "kind": "artifact_id",
+        "locator": "synthetic-task-request-001",
+        "version": "v1",
+        "fragment": "request"
+      },
+      "observed_at": "2026-06-16T12:59:00Z",
+      "referenced_at": "2026-06-16T12:58:00Z",
+      "excerpt_policy": {
+        "mode": "synthetic_summary",
+        "reason": "Synthetic task request avoids private tool names and operational access details.",
+        "max_excerpt_chars": 0
+      },
+      "privacy": "synthetic",
+      "provenance": {
+        "method": "synthetic fixture annotation",
+        "confidence": 0.9,
+        "chain": [
+          "source_record.created_from_synthetic_fixture",
+          "task_mentions_need_for_specialized_processing"
+        ],
+        "verified_by": [
+          "json_parse_check"
+        ]
+      },
+      "metadata": {
+        "domain": "skill-recommender",
+        "contains_real_transcript": false,
+        "task_type": "unknown_media_analysis",
+        "operator_requested_tool": false
+      }
+    }
+  ],
+  "available_capabilities": [
+    {
+      "id": "synthetic-text-summarizer",
+      "description": "Summarizes plain text documents.",
+      "declared_inputs": [
+        "text/plain"
+      ],
+      "declared_outputs": [
+        "summary"
+      ],
+      "privacy": "synthetic"
+    },
+    {
+      "id": "synthetic-project-router",
+      "description": "Routes generic project tasks to planning or review surfaces.",
+      "declared_inputs": [
+        "task_description",
+        "project_metadata"
+      ],
+      "declared_outputs": [
+        "routing_note"
+      ],
+      "privacy": "synthetic"
+    }
+  ],
+  "candidate_recommendation": {
+    "skill_id": "synthetic-text-summarizer",
+    "rationale": "The task contains words that resemble a document workflow, but no supported input type or successful outcome signal is present.",
+    "confidence": 0.31,
+    "evidence_refs": [
+      "src_syn_skill_task_001"
+    ]
+  },
+  "expected_outcome": {
+    "should_recommend_skill": false,
+    "should_abstain": true,
+    "expected_flags": [
+      "insufficient_capability_match",
+      "unsupported_input_type",
+      "missing_outcome_signal"
+    ],
+    "missing_capability_note": "No available synthetic capability declares support for the requested media or evidence type.",
+    "recommended_use": "Ask for supported input details or continue without activating a specialized skill.",
+    "do_not_use_for": "Do not infer private tool availability, credentials, or hidden capability access."
+  }
+}

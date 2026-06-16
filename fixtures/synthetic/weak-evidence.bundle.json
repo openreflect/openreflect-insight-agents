@@ -1,0 +1,103 @@
+{
+  "fixture_id": "synthetic_weak_evidence_001",
+  "schema_version": "2026-06-16",
+  "description": "A claim is plausible but supported only by an indirect note and an unverified artifact pointer.",
+  "privacy": "synthetic",
+  "source_records": [
+    {
+      "id": "src_syn_weak_note_001",
+      "created_at": "2026-06-16T09:00:00Z",
+      "source_system": "synthetic-eval-fixture",
+      "source_type": "memory",
+      "source_ref": {
+        "kind": "artifact_id",
+        "locator": "synthetic-memory-note-weak-001",
+        "version": "v1",
+        "fragment": "summary"
+      },
+      "observed_at": "2026-06-16T08:58:00Z",
+      "referenced_at": "2026-06-15T14:30:00Z",
+      "excerpt_policy": {
+        "mode": "synthetic_summary",
+        "reason": "Public fixture uses generic synthetic summary text only.",
+        "max_excerpt_chars": 0
+      },
+      "privacy": "synthetic",
+      "provenance": {
+        "method": "synthetic fixture annotation",
+        "confidence": 0.55,
+        "chain": [
+          "source_record.created_from_synthetic_fixture",
+          "claim_mentions_possible_priority_without_direct_confirmation"
+        ],
+        "verified_by": [
+          "json_parse_check"
+        ]
+      },
+      "metadata": {
+        "domain": "evidence-quality",
+        "contains_real_transcript": false,
+        "evidence_strength": "weak",
+        "direct_observation": false
+      }
+    },
+    {
+      "id": "src_syn_weak_artifact_001",
+      "created_at": "2026-06-16T09:02:00Z",
+      "source_system": "synthetic-eval-fixture",
+      "source_type": "artifact",
+      "source_ref": {
+        "kind": "artifact_id",
+        "locator": "synthetic-task-board-001",
+        "version": "v1",
+        "fragment": "card-17"
+      },
+      "observed_at": "2026-06-16T09:01:00Z",
+      "referenced_at": "2026-06-12T10:00:00Z",
+      "excerpt_policy": {
+        "mode": "synthetic_summary",
+        "reason": "The fixture should exercise source pointers without embedding private content.",
+        "max_excerpt_chars": 0
+      },
+      "privacy": "synthetic",
+      "provenance": {
+        "method": "synthetic fixture annotation",
+        "confidence": 0.4,
+        "chain": [
+          "source_record.created_from_synthetic_fixture",
+          "artifact_pointer_not_cross_checked"
+        ],
+        "verified_by": [
+          "json_parse_check"
+        ]
+      },
+      "metadata": {
+        "domain": "evidence-quality",
+        "contains_real_transcript": false,
+        "artifact_status": "unverified",
+        "direct_observation": false
+      }
+    }
+  ],
+  "input_claims": [
+    {
+      "id": "claim_syn_weak_001",
+      "claim": "The project is blocked primarily by missing review feedback.",
+      "evidence_refs": [
+        "src_syn_weak_note_001",
+        "src_syn_weak_artifact_001"
+      ]
+    }
+  ],
+  "expected_outcome": {
+    "should_emit_insight": true,
+    "expected_confidence_max": 0.45,
+    "expected_flags": [
+      "weak_evidence",
+      "indirect_source",
+      "verification_needed"
+    ],
+    "recommended_use": "Use only as a prompt to verify current blocker status from a direct project source.",
+    "do_not_use_for": "Do not present as current project truth or assign ownership."
+  }
+}
