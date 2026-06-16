@@ -1,0 +1,26 @@
+{
+  "id": "signal_synthetic_shared_001",
+  "created_at": "2026-01-15T10:10:00Z",
+  "observed_at": "2026-01-15T10:05:00Z",
+  "referenced_at": null,
+  "source_refs": [
+    "synthetic-transcript-001#turn-1"
+  ],
+  "signal_type": "work_context",
+  "signal_labels": [
+    "context-density",
+    "topic-separation-request"
+  ],
+  "confidence": 0.74,
+  "recency_scope": "present",
+  "evidence_excerpt": "Synthetic user asks the assistant to separate multiple topics before answering.",
+  "interpretation": "The interaction contains a bounded signal that the user needs explicit topic separation before synthesis.",
+  "recommended_use": "Organize the next response by topic and avoid collapsing separate workstreams into one answer.",
+  "do_not_use_for": "Do not infer a durable user trait from this single synthetic turn.",
+  "uncertainty": "The example is synthetic and only demonstrates schema shape.",
+  "privacy": "synthetic",
+  "extensions": {
+    "capability_agent": "human-telemetry",
+    "example_kind": "shared_schema_fixture"
+  }
+}
