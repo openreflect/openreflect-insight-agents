@@ -35,6 +35,10 @@ SCHEMA_EXAMPLE_PAIRS = (
         ROOT / "examples" / "source-record.example.json",
     ),
     (
+        ROOT / "schemas" / "signal-record.schema.json",
+        ROOT / "examples" / "signal-record.example.json",
+    ),
+    (
         ROOT / "agents" / "human-telemetry-agent" / "schema" / "signal-record.schema.json",
         ROOT / "agents" / "human-telemetry-agent" / "examples" / "signals.example.jsonl",
     ),
