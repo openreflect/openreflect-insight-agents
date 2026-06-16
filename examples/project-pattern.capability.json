@@ -1,0 +1,29 @@
+{
+  "id": "project-pattern",
+  "name": "Project Pattern",
+  "status": "planned",
+  "purpose": "Identify recurring project-level patterns across provenance-backed notes, artifacts, and decision records.",
+  "inputs": [
+    "project_notes",
+    "decision_records",
+    "artifact_metadata",
+    "insight_records"
+  ],
+  "outputs": [
+    "pattern_record",
+    "supporting_evidence",
+    "recommended_follow_up"
+  ],
+  "privacy_boundary": "Uses public-safe project abstractions and synthetic fixtures only; real customer data, private repository paths, and internal planning records stay outside committed examples.",
+  "must_not_infer": [
+    "unstated_project_owner",
+    "confidential_roadmap",
+    "business_priority_without_source",
+    "causal_claim_without_evidence"
+  ],
+  "evals": [
+    "synthetic_project_pattern_fixture",
+    "evidence_linkage_check",
+    "confidentiality_boundary_check"
+  ]
+}

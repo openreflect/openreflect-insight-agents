@@ -1,0 +1,29 @@
+{
+  "id": "evidence-quality",
+  "name": "Evidence Quality",
+  "status": "planned",
+  "purpose": "Score the quality, freshness, and source clarity of evidence attached to insight records or action briefs.",
+  "inputs": [
+    "source_references",
+    "insight_records",
+    "artifact_metadata",
+    "claim_list"
+  ],
+  "outputs": [
+    "evidence_quality_score",
+    "weak_evidence_flags",
+    "verification_recommendations"
+  ],
+  "privacy_boundary": "Only evaluates public-safe source metadata and synthetic claims in this repository; private evidence bodies, raw transcripts, and internal audit logs remain external.",
+  "must_not_infer": [
+    "truth_of_claim_without_source",
+    "source_intent",
+    "legal_conclusion",
+    "medical_conclusion"
+  ],
+  "evals": [
+    "synthetic_claim_quality_set",
+    "missing_source_detection",
+    "stale_source_flagging"
+  ]
+}

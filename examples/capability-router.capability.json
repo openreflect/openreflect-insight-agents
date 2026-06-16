@@ -1,0 +1,29 @@
+{
+  "id": "capability-router",
+  "name": "Capability Router",
+  "status": "planned",
+  "purpose": "Route tasks to planned or available insight capabilities based on manifest metadata, input requirements, and evaluation boundaries.",
+  "inputs": [
+    "task_request",
+    "capability_manifests",
+    "input_inventory",
+    "policy_constraints"
+  ],
+  "outputs": [
+    "routing_decision",
+    "capability_match_rationale",
+    "unsupported_request_note"
+  ],
+  "privacy_boundary": "Routing examples must use public manifest metadata and synthetic task requests; private policy details, local environment data, and operational routing logs are excluded.",
+  "must_not_infer": [
+    "capability_active_when_planned",
+    "private_data_access",
+    "policy_exception",
+    "production_readiness"
+  ],
+  "evals": [
+    "synthetic_routing_fixture",
+    "planned_status_boundary_check",
+    "unsupported_request_detection"
+  ]
+}

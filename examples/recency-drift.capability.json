@@ -1,0 +1,29 @@
+{
+  "id": "recency-drift",
+  "name": "Recency Drift",
+  "status": "planned",
+  "purpose": "Detect when older memories, summaries, or artifacts may be stale relative to newer evidence.",
+  "inputs": [
+    "timestamped_insight_records",
+    "memory_summaries",
+    "artifact_versions",
+    "recent_observations"
+  ],
+  "outputs": [
+    "drift_warning",
+    "superseded_reference_list",
+    "refresh_recommendation"
+  ],
+  "privacy_boundary": "Operates on public-safe timestamps, synthetic summaries, and generic artifact metadata; private histories and operational timelines must stay out of committed examples.",
+  "must_not_infer": [
+    "current_state_from_old_history",
+    "supersession_without_newer_source",
+    "user_preference_change_without_evidence",
+    "system_status_without_live_check"
+  ],
+  "evals": [
+    "synthetic_staleness_fixture",
+    "newer_evidence_precedence_check",
+    "false_drift_check"
+  ]
+}

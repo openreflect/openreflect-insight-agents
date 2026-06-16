@@ -1,0 +1,29 @@
+{
+  "id": "feedback-loop",
+  "name": "Feedback Loop",
+  "status": "planned",
+  "purpose": "Track how human or system feedback changes future insight generation, routing, and evaluation behavior.",
+  "inputs": [
+    "feedback_events",
+    "prior_recommendations",
+    "outcome_records",
+    "eval_results"
+  ],
+  "outputs": [
+    "feedback_summary",
+    "behavior_adjustment_note",
+    "eval_update_recommendation"
+  ],
+  "privacy_boundary": "Uses synthetic feedback and public-safe outcome categories only; private user feedback, chat identifiers, and deployment telemetry remain outside this repository.",
+  "must_not_infer": [
+    "satisfaction_without_feedback",
+    "personal_preference_from_single_event",
+    "model_quality_without_eval",
+    "deployment_health_without_telemetry"
+  ],
+  "evals": [
+    "synthetic_feedback_fixture",
+    "single_event_overfit_check",
+    "eval_traceability_check"
+  ]
+}

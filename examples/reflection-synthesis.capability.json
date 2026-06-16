@@ -1,0 +1,29 @@
+{
+  "id": "reflection-synthesis",
+  "name": "Reflection Synthesis",
+  "status": "planned",
+  "purpose": "Summarize provenance-backed observations into concise reflective notes for later human or agent review.",
+  "inputs": [
+    "insight_records",
+    "artifact_references",
+    "transcript_excerpts",
+    "operator_notes"
+  ],
+  "outputs": [
+    "reflection_summary",
+    "source_reference_list",
+    "open_questions"
+  ],
+  "privacy_boundary": "Designed for public schemas and synthetic examples; private transcripts, identities, local paths, and operational logs must remain in downstream private deployments.",
+  "must_not_infer": [
+    "private_motive_without_evidence",
+    "psychological_diagnosis",
+    "intent_from_single_observation",
+    "production_readiness"
+  ],
+  "evals": [
+    "synthetic_reflection_summary",
+    "source_attribution_check",
+    "non_inference_boundary_check"
+  ]
+}

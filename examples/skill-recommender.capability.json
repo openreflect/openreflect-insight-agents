@@ -1,0 +1,29 @@
+{
+  "id": "skill-recommender",
+  "name": "Skill Recommender",
+  "status": "planned",
+  "purpose": "Recommend candidate agent skills from task context, available capability descriptions, and provenance-backed outcome signals.",
+  "inputs": [
+    "task_description",
+    "capability_registry",
+    "skill_metadata",
+    "outcome_signals"
+  ],
+  "outputs": [
+    "skill_recommendation",
+    "selection_rationale",
+    "missing_capability_note"
+  ],
+  "privacy_boundary": "Recommendations must be based on public-safe metadata and synthetic outcomes; private skill contents, credentials, and deployment-specific logs must not be committed.",
+  "must_not_infer": [
+    "credential_availability",
+    "private_tool_access",
+    "operator_identity",
+    "skill_safety_without_eval"
+  ],
+  "evals": [
+    "synthetic_skill_selection",
+    "missing_skill_detection",
+    "private_access_non_inference_check"
+  ]
+}
