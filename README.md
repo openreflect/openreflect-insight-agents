@@ -76,8 +76,14 @@ The framework separates memory from insight:
 .
 ├── README.md
 ├── docs/
+│   ├── ADDING-CAPABILITY-AGENTS.md
 │   ├── ARCHITECTURE.md
 │   ├── CAPABILITY-REGISTRY.md
+│   ├── GLOSSARY.md
+│   ├── MATURITY.md
+│   ├── ROADMAP.md
+│   ├── SIGNAL-RECORDS.md
+│   ├── SOURCE-ADAPTERS.md
 │   └── PRD.md
 ├── agents/
 │   └── human-telemetry-agent/
@@ -94,6 +100,16 @@ The framework separates memory from insight:
 ## Current status
 
 Initial project workspace. The first imported capability agent is `agents/human-telemetry-agent`, a public-safe scaffold for extracting time-aware user state and work-context signals from assistant interaction traces.
+
+Useful starting points:
+
+- `docs/PRD.md` defines the product shape.
+- `docs/ARCHITECTURE.md` defines the source-adapter to insight-record flow.
+- `docs/GLOSSARY.md` defines shared project terminology.
+- `docs/SOURCE-ADAPTERS.md` defines the adapter contract for provenance-rich sources.
+- `docs/SIGNAL-RECORDS.md` defines shared signal record expectations.
+- `docs/ADDING-CAPABILITY-AGENTS.md` explains how to add new capability agents.
+- `docs/MATURITY.md` and `docs/ROADMAP.md` describe current maturity and near-term direction.
 
 Run the public-safe audit:
 
