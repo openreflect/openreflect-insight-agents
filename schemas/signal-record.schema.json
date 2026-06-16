@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/openreflect-insight-agents/signal-record.schema.json",
+  "title": "OpenReflect Signal Record",
+  "description": "Shared signal record schema for capability agents. Signals are bounded, provenance-backed observations that may be composed into insight records.",
+  "type": "object",
+  "required": [
+    "id",
+    "signal_type",
+    "signal_labels",
+    "confidence",
+    "recency_scope",
+    "interpretation",
+    "recommended_use",
+    "privacy"
+  ],
+  "allOf": [
+    {
+      "anyOf": [
+        { "required": ["created_at"] },
+        { "required": ["observed_at"] }
+      ]
+    },
+    {
+      "anyOf": [
+        { "required": ["source_refs"] },
+        { "required": ["evidence_refs"] }
+      ]
+    }
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "referenced_at": { "type": ["string", "null"], "format": "date-time" },
+    "source_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "signal_type": { "type": "string" },
+    "signal_labels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "recency_scope": {
+      "type": "string",
+      "enum": ["present", "recent", "near_history", "medium_history", "long_history", "mixed", "unknown"]
+    },
+    "evidence_excerpt": { "type": ["string", "null"] },
+    "interpretation": { "type": "string" },
+    "recommended_use": { "type": "string" },
+    "do_not_use_for": { "type": "string" },
+    "uncertainty": { "type": "string" },
+    "privacy": {
+      "type": "string",
+      "enum": ["public", "synthetic", "private", "restricted"]
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Capability-specific fields. Extension schemas should define required keys and allowed values for this object.",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
