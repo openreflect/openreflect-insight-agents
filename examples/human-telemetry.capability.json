@@ -1,0 +1,29 @@
+{
+  "id": "human-telemetry-agent",
+  "name": "Human Telemetry Agent",
+  "status": "scaffolded",
+  "purpose": "Extract time-aware user state and work-context signals from provenance-bearing interaction traces.",
+  "inputs": [
+    "transcript_excerpt",
+    "memory_snippet",
+    "project_note",
+    "voice_transcript"
+  ],
+  "outputs": [
+    "signal_record",
+    "state_narrative",
+    "assistant_action_brief"
+  ],
+  "privacy_boundary": "Public schema and synthetic fixtures only; real profiles, transcripts, source paths, and calibration logs stay in private downstream deployments.",
+  "must_not_infer": [
+    "medical_diagnosis",
+    "psychiatric_condition",
+    "current_state_from_old_history",
+    "identity_from_ambiguous_source"
+  ],
+  "evals": [
+    "synthetic_body_state_transcript",
+    "synthetic_context_jump_transcript",
+    "public_repo_audit"
+  ]
+}

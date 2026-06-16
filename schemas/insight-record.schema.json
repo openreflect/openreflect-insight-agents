@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/openreflect-insight-agents/insight-record.schema.json",
+  "title": "OpenReflect Insight Record",
+  "type": "object",
+  "required": [
+    "id",
+    "created_at",
+    "claim",
+    "evidence_refs",
+    "confidence",
+    "recency_scope",
+    "uncertainty",
+    "recommended_use",
+    "privacy"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "claim": { "type": "string" },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "recency_scope": {
+      "type": "string",
+      "enum": ["present", "recent", "near_history", "medium_history", "long_history", "mixed", "unknown"]
+    },
+    "uncertainty": { "type": "string" },
+    "recommended_use": { "type": "string" },
+    "do_not_use_for": { "type": "string" },
+    "privacy": {
+      "type": "string",
+      "enum": ["public", "synthetic", "private", "restricted"]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/openreflect-insight-agents/capability-manifest.schema.json",
+  "title": "Insight Capability Manifest",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "status",
+    "purpose",
+    "inputs",
+    "outputs",
+    "privacy_boundary",
+    "evals"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "scaffolded", "active", "deprecated"]
+    },
+    "purpose": { "type": "string" },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "privacy_boundary": { "type": "string" },
+    "must_not_infer": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evals": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

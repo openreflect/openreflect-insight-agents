@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/openreflect-insight-agents/action-brief.schema.json",
+  "title": "Assistant Action Brief",
+  "type": "object",
+  "required": [
+    "id",
+    "created_at",
+    "scope",
+    "summary",
+    "recommended_adjustments",
+    "checkins",
+    "stop_conditions",
+    "evidence_refs",
+    "privacy"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "scope": { "type": "string" },
+    "summary": { "type": "string" },
+    "recommended_adjustments": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "checkins": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "privacy": {
+      "type": "string",
+      "enum": ["public", "synthetic", "private", "restricted"]
+    }
+  },
+  "additionalProperties": false
+}
