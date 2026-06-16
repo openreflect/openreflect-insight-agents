@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/openreflect-insight-agents/feedback-record.schema.json",
+  "title": "Assistant Feedback Record",
+  "type": "object",
+  "required": [
+    "id",
+    "created_at",
+    "action_brief_ref",
+    "observed_outcome",
+    "correction_summary",
+    "evidence_refs",
+    "confidence",
+    "privacy"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "action_brief_ref": { "type": "string" },
+    "observed_outcome": {
+      "type": "object",
+      "required": [
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["helped", "missed", "corrected", "became_stale", "should_retire", "mixed", "unknown"]
+        },
+        "summary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "correction_summary": {
+      "type": ["string", "null"]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "privacy": {
+      "type": "string",
+      "enum": ["public", "synthetic", "private", "restricted"]
+    }
+  },
+  "additionalProperties": false
+}
