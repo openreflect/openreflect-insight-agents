@@ -19,7 +19,7 @@
     "credential_availability",
     "private_tool_access",
     "operator_identity",
-    "skill_safety_without_eval"
+    "unsupported skill safety claim"
   ],
   "evals": [
     "synthetic_skill_selection",
