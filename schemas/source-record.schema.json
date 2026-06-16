@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/openreflect-insight-agents/source-record.schema.json",
+  "title": "OpenReflect Source Record",
+  "type": "object",
+  "required": [
+    "id",
+    "created_at",
+    "source_system",
+    "source_type",
+    "source_ref",
+    "observed_at",
+    "referenced_at",
+    "privacy",
+    "provenance",
+    "metadata"
+  ],
+  "oneOf": [
+    { "required": ["content_ref"] },
+    { "required": ["excerpt_policy"] }
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "source_system": { "type": "string" },
+    "source_type": {
+      "type": "string",
+      "enum": ["transcript", "artifact", "memory", "telemetry", "document", "event", "other"]
+    },
+    "source_ref": {
+      "type": "object",
+      "required": ["kind", "locator"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["external_id", "artifact_id", "dataset_id", "uri", "content_address", "opaque_handle"]
+        },
+        "locator": { "type": "string" },
+        "version": { "type": "string" },
+        "fragment": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "referenced_at": { "type": "string", "format": "date-time" },
+    "content_ref": {
+      "type": "object",
+      "required": ["kind", "locator"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["external_id", "artifact_id", "dataset_id", "uri", "content_address", "opaque_handle"]
+        },
+        "locator": { "type": "string" },
+        "media_type": { "type": "string" },
+        "byte_range": {
+          "type": "object",
+          "required": ["start", "end"],
+          "properties": {
+            "start": { "type": "integer", "minimum": 0 },
+            "end": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "excerpt_policy": {
+      "type": "object",
+      "required": ["mode", "reason"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["none", "redacted", "synthetic_summary", "short_quote_allowed"]
+        },
+        "reason": { "type": "string" },
+        "max_excerpt_chars": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "privacy": {
+      "type": "string",
+      "enum": ["public", "synthetic", "private", "restricted"]
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["method", "confidence", "chain"],
+      "properties": {
+        "method": { "type": "string" },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "chain": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "verified_by": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean", "null"]
+      }
+    }
+  },
+  "additionalProperties": false
+}

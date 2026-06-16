@@ -1,0 +1,36 @@
+{
+  "id": "src_synthetic_context_note_001",
+  "created_at": "2026-06-16T12:00:00Z",
+  "source_system": "synthetic-eval-fixture",
+  "source_type": "transcript",
+  "source_ref": {
+    "kind": "artifact_id",
+    "locator": "synthetic-transcript-batch-001",
+    "version": "v1",
+    "fragment": "turns-004-008"
+  },
+  "observed_at": "2026-06-16T11:55:00Z",
+  "referenced_at": "2026-06-16T11:59:00Z",
+  "excerpt_policy": {
+    "mode": "synthetic_summary",
+    "reason": "Example records avoid embedding source text and use public-safe synthetic references.",
+    "max_excerpt_chars": 0
+  },
+  "privacy": "synthetic",
+  "provenance": {
+    "method": "synthetic fixture annotation",
+    "confidence": 1,
+    "chain": [
+      "source_record.created_from_synthetic_fixture",
+      "source_ref.points_to_public_safe_artifact_identifier"
+    ],
+    "verified_by": [
+      "json_parse_check"
+    ]
+  },
+  "metadata": {
+    "domain": "context-continuity",
+    "contains_real_transcript": false,
+    "retention_class": "example-only"
+  }
+}
