@@ -8,7 +8,7 @@ Public posture: generic framework first; private memory adapters and calibration
 
 OpenReflect Insight Agents is a framework for building agents that enrich memory with evidence-backed insight. It provides schemas, prompts, fixtures, and capability-agent patterns for mining assistant interaction history, project artifacts, and telemetry into actionable reflection.
 
-The repo starts with one capability agent: Human Telemetry Agent. The broader direction is a library of skill, MCP, and capability agents that can mine and feed OpenReflect.
+The repo starts with a small capability-agent catalog: Human Telemetry Agent, Pattern Analyst Agent, Decision Trace Agent, and Ambiguity Checker Agent. The broader direction is a library of skill, MCP, and capability agents that can mine and feed OpenReflect.
 
 ## Problem
 
@@ -31,6 +31,7 @@ OpenReflect should not be a shared scratchpad for agents. It should be a reflect
 
 - Define a public-safe capability-agent framework for OpenReflect.
 - Import Human Telemetry Agent as the first capability agent.
+- Add Pattern Analyst, Decision Trace Agent, and Ambiguity Checker as scaffolded catalog agents.
 - Provide schemas for signal records, insight records, and assistant action briefs.
 - Provide prompt patterns for extraction, review, and synthesis agents.
 - Maintain a registry of skills, MCPs, and capability agents.
@@ -66,6 +67,20 @@ Initial outputs:
 - assistant action briefs
 - check-in recommendations
 - privacy tier and evidence policy
+
+## Scaffolded Catalog Agents
+
+### Pattern Analyst Agent
+
+Purpose: detect recurring structures across provenance-bearing records and emit bounded pattern insights with uncertainty.
+
+### Decision Trace Agent
+
+Purpose: reconstruct decision provenance from evidence-bearing records without inventing missing rationale.
+
+### Ambiguity Checker Agent
+
+Purpose: detect action-changing ambiguity and recommend clarification, explicit assumptions, abstention, or source verification.
 
 ## Future Capability Agents
 
@@ -104,6 +119,7 @@ Candidate agents:
 - top-level README and PRD
 - capability registry
 - Human Telemetry Agent imported under `agents/`
+- Pattern Analyst, Decision Trace, and Ambiguity Checker scaffolded under `agents/`
 - public audit passes
 
 ### M1: Shared Schemas

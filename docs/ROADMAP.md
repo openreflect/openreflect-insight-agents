@@ -55,6 +55,9 @@ workflow.
     and fixtures where applicable
   - keep the registry descriptive rather than an execution authority
 - Add capability-agent examples beyond human telemetry:
+  - pattern analysis
+  - decision tracing
+  - ambiguity checking
   - reflection synthesis
   - project pattern detection
   - skill and workflow recommendation

@@ -13,6 +13,33 @@ This registry tracks the initial OpenReflect insight-agent surface.
 - Outputs: signal records, state narratives, assistant action briefs.
 - Privacy: public framework with private downstream calibration.
 
+### Pattern Analyst Agent
+
+- Path: `agents/pattern-analyst-agent`
+- Status: scaffolded
+- Purpose: detect recurring structures across provenance-bearing records and emit bounded pattern insights with uncertainty.
+- Inputs: source records, signal records, insight records, project notes.
+- Outputs: insight records, pattern summaries.
+- Privacy: public framework with private downstream traces and calibration.
+
+### Decision Trace Agent
+
+- Path: `agents/decision-trace-agent`
+- Status: scaffolded
+- Purpose: reconstruct decision provenance from evidence-bearing records without inventing missing rationale.
+- Inputs: source records, transcript excerpts, project notes, commit summaries, insight records.
+- Outputs: insight records, decision traces, revisit triggers.
+- Privacy: public framework with private downstream decision logs and operational traces.
+
+### Ambiguity Checker Agent
+
+- Path: `agents/ambiguity-checker-agent`
+- Status: scaffolded
+- Purpose: detect action-changing ambiguity and recommend clarification, explicit assumptions, abstention, or source verification.
+- Inputs: user requests, project notes, source records, signal records, insight records, action briefs.
+- Outputs: insight records, ambiguity findings, clarifying questions.
+- Privacy: public framework with private downstream policies and deployment thresholds.
+
 ## Planned Capability Agents
 
 ### Reflection Synthesis Agent

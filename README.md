@@ -31,6 +31,9 @@ source adapters
 capability agents
         |
         +--> human telemetry
+        +--> pattern analysis
+        +--> decision tracing
+        +--> ambiguity checking
         +--> reflection synthesis
         +--> project pattern mining
         +--> agent capability routing
@@ -86,7 +89,10 @@ The framework separates memory from insight:
 │   ├── SOURCE-ADAPTERS.md
 │   └── PRD.md
 ├── agents/
-│   └── human-telemetry-agent/
+│   ├── human-telemetry-agent/
+│   ├── pattern-analyst-agent/
+│   ├── decision-trace-agent/
+│   └── ambiguity-checker-agent/
 ├── capability-agents/
 ├── mcps/
 ├── skills/
@@ -99,7 +105,12 @@ The framework separates memory from insight:
 
 ## Current status
 
-Initial project workspace. The first imported capability agent is `agents/human-telemetry-agent`, a public-safe scaffold for extracting time-aware user state and work-context signals from assistant interaction traces.
+Initial project workspace. The first scaffolded capability agents are:
+
+- `agents/human-telemetry-agent`: extracts time-aware user state and work-context signals from assistant interaction traces.
+- `agents/pattern-analyst-agent`: detects recurring structures across provenance-bearing records.
+- `agents/decision-trace-agent`: reconstructs decision provenance without inventing missing rationale.
+- `agents/ambiguity-checker-agent`: identifies action-changing ambiguity before assistant action.
 
 Useful starting points:
 
