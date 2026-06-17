@@ -1,0 +1,30 @@
+{
+  "id": "decision-trace-agent",
+  "name": "Decision Trace Agent",
+  "status": "scaffolded",
+  "purpose": "Reconstruct decision provenance from evidence-bearing records without inventing missing rationale.",
+  "inputs": [
+    "source_record",
+    "transcript_excerpt",
+    "project_note",
+    "commit_summary",
+    "insight_record"
+  ],
+  "outputs": [
+    "insight_record",
+    "decision_trace",
+    "revisit_trigger"
+  ],
+  "privacy_boundary": "Public prompts and synthetic traces only; real decisions, operational logs, private project records, and source adapters stay downstream.",
+  "must_not_infer": [
+    "private_motive",
+    "unstated_rationale",
+    "decision_correctness",
+    "organizational_identity_from_context"
+  ],
+  "evals": [
+    "synthetic_agent_selection_notes",
+    "insight_record_schema_shape",
+    "public_repo_audit"
+  ]
+}
