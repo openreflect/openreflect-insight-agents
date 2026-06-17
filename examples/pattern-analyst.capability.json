@@ -1,0 +1,28 @@
+{
+  "id": "pattern-analyst-agent",
+  "name": "Pattern Analyst Agent",
+  "status": "scaffolded",
+  "purpose": "Detect recurring structures across provenance-bearing records and emit bounded pattern insights with uncertainty.",
+  "inputs": [
+    "source_record",
+    "signal_record",
+    "insight_record",
+    "project_note"
+  ],
+  "outputs": [
+    "insight_record",
+    "pattern_summary"
+  ],
+  "privacy_boundary": "Public prompts, synthetic fixtures, and generic pattern contracts only; real traces, calibration rules, and deployment adapters stay downstream.",
+  "must_not_infer": [
+    "current_state_from_old_history",
+    "personality_trait_from_sparse_repetition",
+    "medical_or_psychological_condition",
+    "identity_from_ambiguous_source"
+  ],
+  "evals": [
+    "synthetic_project_loop_notes",
+    "insight_record_schema_shape",
+    "public_repo_audit"
+  ]
+}
