@@ -1,0 +1,31 @@
+{
+  "id": "ambiguity-checker-agent",
+  "name": "Ambiguity Checker Agent",
+  "status": "scaffolded",
+  "purpose": "Detect action-changing ambiguity and recommend clarification, explicit assumptions, abstention, or source verification.",
+  "inputs": [
+    "user_request",
+    "project_note",
+    "source_record",
+    "signal_record",
+    "insight_record",
+    "action_brief"
+  ],
+  "outputs": [
+    "insight_record",
+    "ambiguity_finding",
+    "clarifying_question"
+  ],
+  "privacy_boundary": "Public prompts, synthetic fixtures, and generic ambiguity contracts only; private policies, live requests, and deployment thresholds stay downstream.",
+  "must_not_infer": [
+    "unstated_user_intent",
+    "permission_for_external_action",
+    "identity_from_ambiguous_reference",
+    "source_verified_claim_without_source_contact"
+  ],
+  "evals": [
+    "synthetic_ambiguous_agent_request",
+    "insight_record_schema_shape",
+    "public_repo_audit"
+  ]
+}
